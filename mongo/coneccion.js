@@ -4,8 +4,6 @@ const chalk = require('chalk');
 const uri = "mongodb+srv://admin:betp2@cluster0-zdy6w.mongodb.net/test?retryWrites=true&w=majority"
 const client = new mongoclient(uri, {useNewUrlParser:true, useUnifiedTopology:true})
 
-
-//User (Le agrego 1 dato extra, ya que las bases de datos NoSQL, permiten esto)
 const nuevaPersona = {
     first: "Timothy",
     last: "Wider",
@@ -13,10 +11,6 @@ const nuevaPersona = {
     gender: "male"
 }
 
-//CRUD Create Read Update Delete
-
-
-//Conecta a la base de datos
 function connectToBD(){
     return new Promise((resolve, reject)=>{
         client.connect((err, result) => {
@@ -31,7 +25,6 @@ function connectToBD(){
     })
 }
 
-//Inserta en la base da datos (CREATE)
 async function insertData(persona){
     const collection = await connectToBD()
     return new Promise((resolve, reject)=>{
@@ -43,7 +36,6 @@ async function insertData(persona){
     })
 }
 
-//Modifica en la base de datos (UPDATE), harcodeado 
 async function modifyData(lastName){
     let collection = await connectToBD()
     return new Promise((resolve, reject)=>{
@@ -54,7 +46,7 @@ async function modifyData(lastName){
         }))
     })
 }
-//Elimina a una persona en la base de datos (DELETE), hardcodeado
+
 async function deleteData(lastName){
     let collection = await connectToBD()
     return new Promise((resolve, reject)=>{
@@ -65,7 +57,7 @@ async function deleteData(lastName){
         }))
     })
 }
-//Muestra los ultimos #cant datos de la base de datos (READ)
+
 async function showData(cant){
     let collection = await connect()
     return new Promise((resolve, reject)=>{
@@ -76,7 +68,6 @@ async function showData(cant){
         })
     })
 }
-
 
 insert(nuevaPersona)
 modifyData("Wider")
