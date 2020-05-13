@@ -112,6 +112,7 @@ async function start(nuevaPersona){
   await modifyData("Wider");
   await showData(20);
   await deleteData("Wider");
+  client.close();
 }
 
 start(nuevaPersona);
